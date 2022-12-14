@@ -1,0 +1,50 @@
+
+entity Fees{
+date LocalDate required 
+}
+relationship OneToOne {
+  Fees to Student
+}
+entity Attendance{
+   date LocalDate required
+}
+relationship ManyToMany {
+Student to Attendance
+}
+entity Parent{
+firstname String required
+lastname String required 
+phoneNumber String required
+accountActive Boolean 
+address String 
+emaildId String 
+photo Blob 
+}
+relationship OneToOne {
+Student{parentId} to Parent{parentId}
+}
+entity Student {
+firstname String required
+lastname String required
+address String required
+phoneNumber String required
+emergencyContactNumber String required
+photo Blob required 
+childIdProof Blob required 
+parentIdProof Blob required
+anyOtherDocument Blob 
+anyDisease String 
+familyDoctorName String 
+familyDoctorNumber String 
+
+}
+entity Teacher{
+firstName String required 
+lastName String required 
+address String required 
+photo Blob required 
+idProof Blob required 
+phoneNumber String required 
+emergencyContactNumber String required 
+
+}

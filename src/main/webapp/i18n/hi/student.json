@@ -1,0 +1,40 @@
+{
+  "schoolApp": {
+    "student": {
+      "home": {
+        "title": "Students",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Student बनाएँ",
+        "createOrEditLabel": "Student बनाएँ या संपादित करें",
+        "notFound": "No Students found"
+      },
+      "created": "एक नया Student [identifier: {{ param }}] तैयार है",
+      "updated": "एक Student [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Student [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Student [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Student"
+      },
+      "id": "ID",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "address": "Address",
+      "phoneNumber": "Phone Number",
+      "emergencyContactNumber": "Emergency Contact Number",
+      "photo": "Photo",
+      "childIdProof": "Child Id Proof",
+      "parentIdProof": "Parent Id Proof",
+      "anyOtherDocument": "Any Other Document",
+      "anyDisease": "Any Disease",
+      "familyDoctorName": "Family Doctor Name",
+      "familyDoctorNumber": "Family Doctor Number",
+      "admissionDate": "Admission Date",
+      "tcDate": "Tc Date",
+      "parentId": "Parent Id",
+      "fees": "Fees",
+      "attendance": "Attendance"
+    }
+  }
+}

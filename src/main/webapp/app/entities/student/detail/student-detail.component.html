@@ -1,0 +1,102 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="student">
+      <h2 data-cy="studentDetailsHeading"><span jhiTranslate="schoolApp.student.detail.title">Student</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ student.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.firstname">Firstname</span></dt>
+        <dd>
+          <span>{{ student.firstname }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.lastname">Lastname</span></dt>
+        <dd>
+          <span>{{ student.lastname }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.address">Address</span></dt>
+        <dd>
+          <span>{{ student.address }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ student.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.emergencyContactNumber">Emergency Contact Number</span></dt>
+        <dd>
+          <span>{{ student.emergencyContactNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.photo">Photo</span></dt>
+        <dd>
+          <div *ngIf="student.photo">
+            <a (click)="openFile(student.photo, student.photoContentType)" jhiTranslate="entity.action.open">Open</a>
+            {{ student.photoContentType }}, {{ byteSize(student.photo) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.childIdProof">Child Id Proof</span></dt>
+        <dd>
+          <div *ngIf="student.childIdProof">
+            <a (click)="openFile(student.childIdProof, student.childIdProofContentType)" jhiTranslate="entity.action.open">Open</a>
+            {{ student.childIdProofContentType }}, {{ byteSize(student.childIdProof) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.parentIdProof">Parent Id Proof</span></dt>
+        <dd>
+          <div *ngIf="student.parentIdProof">
+            <a (click)="openFile(student.parentIdProof, student.parentIdProofContentType)" jhiTranslate="entity.action.open">Open</a>
+            {{ student.parentIdProofContentType }}, {{ byteSize(student.parentIdProof) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.anyOtherDocument">Any Other Document</span></dt>
+        <dd>
+          <div *ngIf="student.anyOtherDocument">
+            <a (click)="openFile(student.anyOtherDocument, student.anyOtherDocumentContentType)" jhiTranslate="entity.action.open">Open</a>
+            {{ student.anyOtherDocumentContentType }}, {{ byteSize(student.anyOtherDocument) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.anyDisease">Any Disease</span></dt>
+        <dd>
+          <span>{{ student.anyDisease }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.familyDoctorName">Family Doctor Name</span></dt>
+        <dd>
+          <span>{{ student.familyDoctorName }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.familyDoctorNumber">Family Doctor Number</span></dt>
+        <dd>
+          <span>{{ student.familyDoctorNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.admissionDate">Admission Date</span></dt>
+        <dd>
+          <span>{{ student.admissionDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.tcDate">Tc Date</span></dt>
+        <dd>
+          <span>{{ student.tcDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.student.parentId">Parent Id</span></dt>
+        <dd>
+          <div *ngIf="student.parentId">
+            <a [routerLink]="['/parent', student.parentId.id, 'view']">{{ student.parentId.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/student', student.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

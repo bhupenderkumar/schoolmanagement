@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="teacher">
+      <h2 data-cy="teacherDetailsHeading"><span jhiTranslate="schoolApp.teacher.detail.title">Teacher</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ teacher.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.teacher.firstName">First Name</span></dt>
+        <dd>
+          <span>{{ teacher.firstName }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.teacher.lastName">Last Name</span></dt>
+        <dd>
+          <span>{{ teacher.lastName }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.teacher.address">Address</span></dt>
+        <dd>
+          <span>{{ teacher.address }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.teacher.photo">Photo</span></dt>
+        <dd>
+          <div *ngIf="teacher.photo">
+            <a (click)="openFile(teacher.photo, teacher.photoContentType)" jhiTranslate="entity.action.open">Open</a>
+            {{ teacher.photoContentType }}, {{ byteSize(teacher.photo) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.teacher.idProof">Id Proof</span></dt>
+        <dd>
+          <div *ngIf="teacher.idProof">
+            <a (click)="openFile(teacher.idProof, teacher.idProofContentType)" jhiTranslate="entity.action.open">Open</a>
+            {{ teacher.idProofContentType }}, {{ byteSize(teacher.idProof) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.teacher.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ teacher.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.teacher.emergencyContactNumber">Emergency Contact Number</span></dt>
+        <dd>
+          <span>{{ teacher.emergencyContactNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.teacher.joiningDate">Joining Date</span></dt>
+        <dd>
+          <span>{{ teacher.joiningDate | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/teacher', teacher.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

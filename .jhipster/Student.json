@@ -1,0 +1,106 @@
+{
+  "applications": "*",
+  "changelogDate": "20221214180904",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "student",
+  "fields": [
+    {
+      "fieldName": "firstname",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lastname",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "emergencyContactNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "childIdProof",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "parentIdProof",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "anyOtherDocument",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "anyDisease",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "familyDoctorName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "familyDoctorNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "admissionDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "tcDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Student",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "parent",
+      "otherEntityRelationshipName": "parentId",
+      "ownerSide": true,
+      "relationshipName": "parentId",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "fees",
+      "otherEntityRelationshipName": "student",
+      "ownerSide": false,
+      "relationshipName": "fees",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "attendance",
+      "otherEntityRelationshipName": "student",
+      "ownerSide": false,
+      "relationshipName": "attendance",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

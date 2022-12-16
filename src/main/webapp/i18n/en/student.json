@@ -1,0 +1,40 @@
+{
+  "schoolApp": {
+    "student": {
+      "home": {
+        "title": "Students",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Student",
+        "createOrEditLabel": "Create or edit a Student",
+        "notFound": "No Students found"
+      },
+      "created": "A new Student is created with identifier {{ param }}",
+      "updated": "A Student is updated with identifier {{ param }}",
+      "deleted": "A Student is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Student {{ id }}?"
+      },
+      "detail": {
+        "title": "Student"
+      },
+      "id": "ID",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "address": "Address",
+      "phoneNumber": "Phone Number",
+      "emergencyContactNumber": "Emergency Contact Number",
+      "photo": "Photo",
+      "childIdProof": "Child Id Proof",
+      "parentIdProof": "Parent Id Proof",
+      "anyOtherDocument": "Any Other Document",
+      "anyDisease": "Any Disease",
+      "familyDoctorName": "Family Doctor Name",
+      "familyDoctorNumber": "Family Doctor Number",
+      "admissionDate": "Admission Date",
+      "tcDate": "Tc Date",
+      "parentId": "Parent Id",
+      "fees": "Fees",
+      "attendance": "Attendance"
+    }
+  }
+}

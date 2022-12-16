@@ -1,0 +1,422 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-student-heading" data-cy="StudentCreateUpdateHeading" jhiTranslate="schoolApp.student.home.createOrEditLabel">
+        Create or edit a Student
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.firstname" for="field_firstname">Firstname</label>
+          <input type="text" class="form-control" name="firstname" id="field_firstname" data-cy="firstname" formControlName="firstname" />
+          <div *ngIf="editForm.get('firstname')!.invalid && (editForm.get('firstname')!.dirty || editForm.get('firstname')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('firstname')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.lastname" for="field_lastname">Lastname</label>
+          <input type="text" class="form-control" name="lastname" id="field_lastname" data-cy="lastname" formControlName="lastname" />
+          <div *ngIf="editForm.get('lastname')!.invalid && (editForm.get('lastname')!.dirty || editForm.get('lastname')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastname')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.address" for="field_address">Address</label>
+          <input type="text" class="form-control" name="address" id="field_address" data-cy="address" formControlName="address" />
+          <div *ngIf="editForm.get('address')!.invalid && (editForm.get('address')!.dirty || editForm.get('address')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('address')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.phoneNumber" for="field_phoneNumber">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phoneNumber"
+            id="field_phoneNumber"
+            data-cy="phoneNumber"
+            formControlName="phoneNumber"
+          />
+          <div *ngIf="editForm.get('phoneNumber')!.invalid && (editForm.get('phoneNumber')!.dirty || editForm.get('phoneNumber')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('phoneNumber')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.emergencyContactNumber" for="field_emergencyContactNumber"
+            >Emergency Contact Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="emergencyContactNumber"
+            id="field_emergencyContactNumber"
+            data-cy="emergencyContactNumber"
+            formControlName="emergencyContactNumber"
+          />
+          <div
+            *ngIf="
+              editForm.get('emergencyContactNumber')!.invalid &&
+              (editForm.get('emergencyContactNumber')!.dirty || editForm.get('emergencyContactNumber')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('emergencyContactNumber')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.photo" for="field_photo">Photo</label>
+          <div>
+            <div *ngIf="editForm.get('photo')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('photo')!.value!, editForm.get('photoContentType')!.value!)"
+                jhiTranslate="entity.action.open"
+                >Open</a
+              ><br />
+              <span class="pull-start">{{ editForm.get('photoContentType')!.value }}, {{ byteSize(editForm.get('photo')!.value!) }}</span>
+              <button
+                type="button"
+                (click)="editForm.patchValue({ photo: undefined, photoContentType: undefined })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_photo"
+              data-cy="photo"
+              (change)="setFileData($event, 'photo', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="photo" id="field_photo" data-cy="photo" formControlName="photo" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="photoContentType"
+            id="field_photoContentType"
+            formControlName="photoContentType"
+          />
+          <div *ngIf="editForm.get('photo')!.invalid && (editForm.get('photo')!.dirty || editForm.get('photo')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('photo')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.childIdProof" for="field_childIdProof">Child Id Proof</label>
+          <div>
+            <div *ngIf="editForm.get('childIdProof')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('childIdProof')!.value!, editForm.get('childIdProofContentType')!.value!)"
+                jhiTranslate="entity.action.open"
+                >Open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('childIdProofContentType')!.value }}, {{ byteSize(editForm.get('childIdProof')!.value!) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ childIdProof: undefined, childIdProofContentType: undefined })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_childIdProof"
+              data-cy="childIdProof"
+              (change)="setFileData($event, 'childIdProof', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="childIdProof"
+            id="field_childIdProof"
+            data-cy="childIdProof"
+            formControlName="childIdProof"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="childIdProofContentType"
+            id="field_childIdProofContentType"
+            formControlName="childIdProofContentType"
+          />
+          <div
+            *ngIf="editForm.get('childIdProof')!.invalid && (editForm.get('childIdProof')!.dirty || editForm.get('childIdProof')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('childIdProof')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.parentIdProof" for="field_parentIdProof">Parent Id Proof</label>
+          <div>
+            <div *ngIf="editForm.get('parentIdProof')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('parentIdProof')!.value!, editForm.get('parentIdProofContentType')!.value!)"
+                jhiTranslate="entity.action.open"
+                >Open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('parentIdProofContentType')!.value }}, {{ byteSize(editForm.get('parentIdProof')!.value!) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ parentIdProof: undefined, parentIdProofContentType: undefined })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_parentIdProof"
+              data-cy="parentIdProof"
+              (change)="setFileData($event, 'parentIdProof', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="parentIdProof"
+            id="field_parentIdProof"
+            data-cy="parentIdProof"
+            formControlName="parentIdProof"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="parentIdProofContentType"
+            id="field_parentIdProofContentType"
+            formControlName="parentIdProofContentType"
+          />
+          <div
+            *ngIf="
+              editForm.get('parentIdProof')!.invalid && (editForm.get('parentIdProof')!.dirty || editForm.get('parentIdProof')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('parentIdProof')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.anyOtherDocument" for="field_anyOtherDocument"
+            >Any Other Document</label
+          >
+          <div>
+            <div *ngIf="editForm.get('anyOtherDocument')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('anyOtherDocument')!.value!, editForm.get('anyOtherDocumentContentType')!.value!)"
+                jhiTranslate="entity.action.open"
+                >Open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('anyOtherDocumentContentType')!.value }}, {{ byteSize(editForm.get('anyOtherDocument')!.value!) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ anyOtherDocument: undefined, anyOtherDocumentContentType: undefined })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_anyOtherDocument"
+              data-cy="anyOtherDocument"
+              (change)="setFileData($event, 'anyOtherDocument', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="anyOtherDocument"
+            id="field_anyOtherDocument"
+            data-cy="anyOtherDocument"
+            formControlName="anyOtherDocument"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="anyOtherDocumentContentType"
+            id="field_anyOtherDocumentContentType"
+            formControlName="anyOtherDocumentContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.anyDisease" for="field_anyDisease">Any Disease</label>
+          <input
+            type="text"
+            class="form-control"
+            name="anyDisease"
+            id="field_anyDisease"
+            data-cy="anyDisease"
+            formControlName="anyDisease"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.familyDoctorName" for="field_familyDoctorName"
+            >Family Doctor Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="familyDoctorName"
+            id="field_familyDoctorName"
+            data-cy="familyDoctorName"
+            formControlName="familyDoctorName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.familyDoctorNumber" for="field_familyDoctorNumber"
+            >Family Doctor Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="familyDoctorNumber"
+            id="field_familyDoctorNumber"
+            data-cy="familyDoctorNumber"
+            formControlName="familyDoctorNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.admissionDate" for="field_admissionDate">Admission Date</label>
+          <div class="input-group">
+            <input
+              id="field_admissionDate"
+              data-cy="admissionDate"
+              type="text"
+              class="form-control"
+              name="admissionDate"
+              ngbDatepicker
+              #admissionDateDp="ngbDatepicker"
+              formControlName="admissionDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="admissionDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.tcDate" for="field_tcDate">Tc Date</label>
+          <div class="input-group">
+            <input
+              id="field_tcDate"
+              data-cy="tcDate"
+              type="text"
+              class="form-control"
+              name="tcDate"
+              ngbDatepicker
+              #tcDateDp="ngbDatepicker"
+              formControlName="tcDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="tcDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="schoolApp.student.parentId" for="field_parentId">Parent Id</label>
+          <select
+            class="form-control"
+            id="field_parentId"
+            data-cy="parentId"
+            name="parentId"
+            formControlName="parentId"
+            [compareWith]="compareParent"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="parentOption" *ngFor="let parentOption of parentIdsCollection">{{ parentOption.id }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

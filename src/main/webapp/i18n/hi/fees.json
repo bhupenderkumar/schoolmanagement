@@ -1,0 +1,25 @@
+{
+  "schoolApp": {
+    "fees": {
+      "home": {
+        "title": "Fees",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Fees बनाएँ",
+        "createOrEditLabel": "Fees बनाएँ या संपादित करें",
+        "notFound": "No Fees found"
+      },
+      "created": "एक नया Fees [identifier: {{ param }}] तैयार है",
+      "updated": "एक Fees [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Fees [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Fees [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Fees"
+      },
+      "id": "ID",
+      "date": "Date",
+      "student": "Student"
+    }
+  }
+}

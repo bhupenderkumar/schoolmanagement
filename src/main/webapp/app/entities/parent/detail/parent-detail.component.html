@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="parent">
+      <h2 data-cy="parentDetailsHeading"><span jhiTranslate="schoolApp.parent.detail.title">Parent</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ parent.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.parent.firstname">Firstname</span></dt>
+        <dd>
+          <span>{{ parent.firstname }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.parent.lastname">Lastname</span></dt>
+        <dd>
+          <span>{{ parent.lastname }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.parent.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ parent.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.parent.accountActive">Account Active</span></dt>
+        <dd>
+          <span>{{ parent.accountActive }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.parent.address">Address</span></dt>
+        <dd>
+          <span>{{ parent.address }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.parent.emaildId">Emaild Id</span></dt>
+        <dd>
+          <span>{{ parent.emaildId }}</span>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.parent.photo">Photo</span></dt>
+        <dd>
+          <div *ngIf="parent.photo">
+            <a (click)="openFile(parent.photo, parent.photoContentType)" jhiTranslate="entity.action.open">Open</a>
+            {{ parent.photoContentType }}, {{ byteSize(parent.photo) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="schoolApp.parent.accountStartingDate">Account Starting Date</span></dt>
+        <dd>
+          <span>{{ parent.accountStartingDate | formatMediumDate }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/parent', parent.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

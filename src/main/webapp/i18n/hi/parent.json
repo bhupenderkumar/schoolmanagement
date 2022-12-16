@@ -1,0 +1,32 @@
+{
+  "schoolApp": {
+    "parent": {
+      "home": {
+        "title": "Parents",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Parent बनाएँ",
+        "createOrEditLabel": "Parent बनाएँ या संपादित करें",
+        "notFound": "No Parents found"
+      },
+      "created": "एक नया Parent [identifier: {{ param }}] तैयार है",
+      "updated": "एक Parent [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Parent [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Parent [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Parent"
+      },
+      "id": "ID",
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "phoneNumber": "Phone Number",
+      "accountActive": "Account Active",
+      "address": "Address",
+      "emaildId": "Emaild Id",
+      "photo": "Photo",
+      "accountStartingDate": "Account Starting Date",
+      "parentId": "Parent Id"
+    }
+  }
+}

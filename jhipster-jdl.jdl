@@ -1,15 +1,16 @@
 
 entity Fees{
-date LocalDate required 
+    date LocalDate required 
 }
 relationship OneToOne {
   Fees to Student
 }
 entity Attendance{
    date LocalDate required
+   
 }
 relationship ManyToMany {
-Student to Attendance
+Attendance to Student
 }
 entity Parent{
 firstname String required
@@ -19,9 +20,15 @@ accountActive Boolean
 address String 
 emaildId String 
 photo Blob 
+accountStartingDate LocalDate 
 }
 relationship OneToOne {
 Student{parentId} to Parent{parentId}
+}
+entity Notification{
+subject String required
+description String required
+notificationDate LocalDate required 
 }
 entity Student {
 firstname String required
@@ -36,6 +43,8 @@ anyOtherDocument Blob
 anyDisease String 
 familyDoctorName String 
 familyDoctorNumber String 
+admissionDate LocalDate
+tcDate LocalDate 
 
 }
 entity Teacher{
@@ -46,5 +55,5 @@ photo Blob required
 idProof Blob required 
 phoneNumber String required 
 emergencyContactNumber String required 
-
+joiningDate LocalDate 
 }

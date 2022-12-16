@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20221214180901",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "fees",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Fees",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "student",
+      "otherEntityRelationshipName": "fees",
+      "ownerSide": true,
+      "relationshipName": "student",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}
